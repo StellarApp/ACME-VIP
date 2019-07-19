@@ -1,0 +1,96 @@
+<html>
+<head></head>
+<body>
+    <h1>Acme Customers VIP</h1>
+    <div>
+        <h2>Customer Input Form</h2>
+        <form>
+            <label>Name</label>
+            <input type="text" class = 'input' id="name" value="" >
+            <label>Email</label>
+            <input type="text" class = 'input' id="email" value=""  >
+            <label>isVIP</label>
+            <input type="checkbox" class = 'input' id="isVIP">
+            <button type="submit" id= "create" >Create</button>
+        </form>
+        <div id='customers-list'>
+
+        </div>
+        <div id='error-list'>
+
+        </div>
+    </div>
+
+    <div id = 'customerListDiv'>
+        <ul id ='customerList'>
+        </ul>
+    </div>
+</body>
+<script>
+    let customers = [];
+    let errors = []
+    /*
+    add event listener to button, 
+    once click button -> submit form -> give you the name, check(email), isVIP 
+    pust these values to customers, errors
+    render both error and customers to the dom
+
+    render(){
+        return html(....)
+    }
+    renderErrors(){
+        set innerHTML to the element 'error-list
+    }
+    */
+
+
+    const btn = document.querySelector('#create')
+    const listSelector = document.querySelector('#customerList')
+
+    btn.addEventListener('click', (ev) =>{
+        ev.preventDefault();
+        // console.log(ev.target.value)
+       let name = document.querySelector('#name')
+       let email = document.querySelector('#email')
+       let isVIP = document.querySelector('#isVIP')
+        let custObj = {
+            name: name.value,
+            email: email.value,
+            isVIP: isVIP.checked
+        }
+    customers.push(custObj)
+
+    //console.log(customers)
+    let li = document.createElement('Li')
+    console.log(custObj)
+        if (isVIP.checked) {
+            // li.innerHTML = `${name.value} is a VIP ${email.value}. ${isVIP.checked}`
+            li.innerHTML = `${name.value} is a VIP ${email.value}.`
+            }
+        else {
+            // li.innerHTML = `${name.value} ${email.value}. ${isVIP.checked}`
+            li.innerHTML = `${name.value} ${email.value}.`
+            }
+            // console.log(li.innerHTML)
+
+   listSelector.appendChild(li)
+    })
+
+    // customers.forEach(ele => {
+    //     let li = document.createElement('Li')
+    //     if (ele.isVIP) {
+    //         li.innerHTML = `${ele.name} is a VIP ${ele.email}`
+    //         }
+    //     else {
+    //         li.innerHTML = `${ele.name} ${ele.email}`
+    //         }
+    //     console.log(li.innerHTML)
+    // })
+   
+    // let newCustomer = document.querySelectorAll('.input');
+    //     //Why this doesn't call the array of 
+    //     [...newCustomer].forEach(newCustomer => {
+    //         console.log(newCustomer.value)
+    //     })        
+</script>
+</html>
